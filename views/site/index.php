@@ -4,5 +4,5 @@
   $this->title = 'Github Search Repositories';
 ?>
 <section>
-  <p>Hello World!</p>
+  <p><?= $message ?></p>
 </section>
