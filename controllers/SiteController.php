@@ -18,8 +18,14 @@ class SiteController extends Controller
         ];
     }
 
-    public function actionIndex($q = null)
+    /**
+     * @param string|null $q
+     * @return array
+     */
+    public function actionIndex(string $q = null): array
     {
-        return "Hello World! xD";
+        return [
+            "hello world!"
+        ];
     }
 }
