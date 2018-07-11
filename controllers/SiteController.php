@@ -18,17 +18,8 @@ class SiteController extends Controller
         ];
     }
 
-    /**
-     * Displays homepage.
-     *
-     * @return string
-     */
-    public function actionIndex()
+    public function actionIndex($q = null)
     {
-        return $this->render('index');
-    }
-
-    public function actionSearch($q) {
-
+        return "Hello World! xD";
     }
 }

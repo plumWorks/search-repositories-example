@@ -15,13 +15,14 @@ $config = [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'oO8DwucmyOJIRv7O81h8SyUC3sA9U0Of',
+            'baseUrl' => 'search'
+        ],
+        'response' => [
+            'format' => \yii\web\Response::FORMAT_JSON,
+            'charset' => 'UTF-8'
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
-        ],
-        'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',

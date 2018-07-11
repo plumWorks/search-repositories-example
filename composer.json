@@ -12,7 +12,8 @@
         "linslin/yii2-curl": "~1.2.0"
     },
     "require-dev": {
-        "yiisoft/yii2-debug": "~2.0.0"
+        "yiisoft/yii2-debug": "~2.0.0",
+        "phpunit/phpunit": "~7.0.0"
     },
     "config": {
         "process-timeout": 1800,
