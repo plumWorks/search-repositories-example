@@ -11,6 +11,7 @@ namespace app\tests;
 use app\controllers\SiteController;
 use PHPUnit\Framework\TestCase;
 use yii\web\Application;
+use yii\web\ServerErrorHttpException;
 
 /**
  * Class SiteControllerTest
@@ -48,7 +49,16 @@ class SiteControllerTest extends TestCase
         $this->assertInstanceOf(SiteController::class, $controller,
             "Given controller isn't of instance SiteController");
 
-        $result = $controller->actionIndex($query);
+        $result = null;
+
+        try {
+            $result = $controller->actionIndex($query);
+        } catch (\Exception $e) {
+            $this->throwException($e);
+        }
+
+        $this->assertTrue(count($result) == 1, "There is more than one item.");
+        $result = $result[0];
 
         $expectedResult = [
             "href" => "https://github.com/plumWorks/search-repositories-example",
