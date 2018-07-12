@@ -92,26 +92,29 @@ class FormSearch {
     }
 
     lookRepositories() {
-        this.progressElement.classList.remove("hidden");
         this.emptyElement.classList.add("hidden");
+
+        this.itemsElement.innerHTML = "";
+        this.loadResults();
+    }
+
+    loadResults() {
+        this.progressElement.classList.remove("hidden");
 
         const url = this.buildUrl();
         this.request.open(this.formElement.method, url);
-        this.request.addEventListener("readystatechange", () => {
+        this.request.onreadystatechange = () => {
             if (this.request.status === 200 && this.request.readyState === 4) {
                 const response = JSON.parse(this.request.responseText);
+                this.lastPage = response.lastPage;
 
                 if (response.items.length === 0) {
                     this.emptyElement.classList.remove("hidden");
                 } else {
-                    this.itemsElement.innerHTML = "";
                     this.fillWithItems(response.items);
                 }
-
-                this.lastPage = response.lastPage;
-                this.progressElement.classList.add("hidden");
             }
-        });
+        };
         this.request.send();
     }
 
@@ -138,6 +141,22 @@ class FormSearch {
             for (const child of itemElement.children) {
                 this.itemsElement.appendChild(child);
             }
+        }
+
+        if (this.page < this.lastPage) {
+            window.onscroll = event => {
+                let leftScroll = document.body.scrollHeight;
+                leftScroll -= (document.documentElement.scrollTop || document.body.scrollTop) + window.innerHeight;
+
+                if (leftScroll < 100) {
+                    this.page++;
+                    this.loadResults();
+
+                    window.onscroll = null;
+                }
+            };
+        } else {
+            this.progressElement.classList.add("hidden");
         }
     }
 }
