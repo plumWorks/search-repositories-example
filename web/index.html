@@ -3,9 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Github Search Repositories</title>
-    <link href="styles/main.css" media="screen" type="text/css">
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+    <script src="js/FormSearch.js" type="application/javascript"></script>
+    <script src="js/main.js" type="application/javascript"></script>
 </head>
 <body>
-    <h1>Work in progress...</h1>
+    <form name="search-repositories" action="/search" method="GET">
+        <fieldset>
+            <input type="text" name="query" placeholder="Search Github Repositories">
+            <button type="submit" disabled="disabled">P</button>
+        </fieldset>
+    </form>
+    <section id="results">
+        <div class="empty hidden">
+            <p>No results.</p>
+        </div>
+        <ul class="items"></ul>
+        <div class="progress hidden">
+            <p>...</p>
+        </div>
+    </section>
+
+    <script id="template-item" type="text/html">
+        <li>
+            <a href="/#!" data-href="href">
+                <img src="/#!" alt="github-avatar" data-img="src" />
+                <p data-name></p>
+                <small data-fullName></small>
+            </a>
+        </li>
+    </script>
 </body>
 </html>
