@@ -14,6 +14,8 @@ class SiteController extends Controller
     protected $api = "https://api.github.com/search/repositories";
 
     /**
+     * Action check parameters for api call with check if error message is'nt throw, then map result with last page
+     *
      * @param string $query
      * @param string|null $sort
      * @param string $order
