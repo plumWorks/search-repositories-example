@@ -11,22 +11,24 @@
     <script src="js/main.js" type="application/javascript"></script>
 </head>
 <body>
-    <form name="search-repositories" action="/search" method="GET">
-        <fieldset>
-            <button type="submit" disabled="disabled"><i class="fas fa-search fa-lg"></i></button>
-            <input type="text" name="query" placeholder="Search Github Repositories">
-            <hr />
-        </fieldset>
-    </form>
-    <section id="results">
-        <div class="empty hidden">
-            <p>No results.</p>
-        </div>
-        <ul class="items"></ul>
-        <div class="progress hidden">
-            <i class="fas fa-spinner fa-spin fa-3x"></i>
-        </div>
-    </section>
+    <div class="container">
+        <form name="search-repositories" action="/search" method="GET">
+            <fieldset>
+                <button type="submit" disabled="disabled"><i class="fas fa-search fa-lg"></i></button>
+                <input type="text" name="query" placeholder="Search Github Repositories">
+                <hr />
+            </fieldset>
+        </form>
+        <section id="results">
+            <div class="empty hidden">
+                <p>No results.</p>
+            </div>
+            <ul class="items"></ul>
+            <div class="progress hidden">
+                <i class="fas fa-spinner fa-spin fa-3x"></i>
+            </div>
+        </section>
+    </div>
 
     <script id="template-item" type="text/html">
         <li>

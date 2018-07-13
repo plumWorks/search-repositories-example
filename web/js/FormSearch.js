@@ -26,8 +26,12 @@ class FormSearch {
         this.inputElement.addEventListener("keyup", () => {
             clearTimeout(this.keyupTimeout);
             this.keyupTimeout = setTimeout(() => {
-                this.toogleSubmit();
-                this.lookRepositories();
+                if (this.inputElement.dataset.oldValue != this.inputElement.value) {
+                    this.toogleSubmit();
+                    this.lookRepositories();
+                }
+
+                this.inputElement.dataset.oldValue = this.inputElement.value;
             }, config.delay);
         });
 
@@ -95,6 +99,7 @@ class FormSearch {
         this.emptyElement.classList.add("hidden");
 
         this.itemsElement.innerHTML = "";
+        this.page = 1;
 
         if (this.inputElement.value === "") {
             this.progressElement.classList.add("hidden");
@@ -128,12 +133,10 @@ class FormSearch {
             let itemElement = this.templateItemElement.cloneNode(true);
 
             for (const key in item) {
-                const attributeKey = "data-" + key;
-
-                let element = itemElement.querySelector("["+ attributeKey +"]");
+                let element = itemElement.querySelector("[data-"+ key +"]");
 
                 if (element !== null) {
-                    const attributeValue = element.getAttribute(attributeKey);
+                    const attributeValue = element.dataset[key];
 
                     if (attributeValue == "" || attributeValue == null) {
                         element.innerHTML = item[key];
