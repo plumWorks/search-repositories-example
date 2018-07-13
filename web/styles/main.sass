@@ -1,7 +1,102 @@
+@import "base"
+
+$backgroundColor: #1BBC9C
+$tintColor: #34495E
+
+$phoneFormHeight: 55px
+
 body
+  margin: 0
   font-family: Roboto
-  transition-duration: 400ms
-  transition-timing-function: ease-out
 
   .hidden
     display: none
+
+  form
+    top: 0
+    position: fixed
+    width: 100%
+    height: $phoneFormHeight
+    background-color: $backgroundColor
+
+    fieldset
+      border: none
+      padding: 0
+      margin: 13px 21px
+
+      input
+        font-size: 1em
+        color: $tintColor
+        width: 100%
+        border: none
+        background-color: transparent
+
+        &::placeholder
+          color: $tintColor
+
+        &:focus
+          outline: none
+
+        &:focus + hr
+          width: 100%
+          border-color: $tintColor
+
+      hr
+        width: 0%
+        margin: 0 auto
+        border-color: transparent
+        transition: 200ms ease-in
+
+      button[type=submit]
+        color: $tintColor
+        position: absolute
+        right: 21px
+
+        @include appearance(none)
+        background-color: transparent
+        border: 0
+
+  section
+    margin-top: $phoneFormHeight
+    color: white
+    background-color: $tintColor
+
+    ul.items
+      list-style: none
+      padding: 0
+
+      li
+        padding: 21px 34px
+        border-top: black 2px solid
+
+        a > *
+            display: inline-block
+
+        a
+          display: block
+          text-decoration: none
+          color: white
+
+          img
+            width: 89px
+            height: 89px
+            border-radius: 13px
+            margin-right: 13px
+            background: white
+
+          .name
+            vertical-align: top
+
+            p
+              font-size: 1.5em
+              margin-bottom: 0
+
+            small
+              opacity: 0.5
+
+    .empty
+      padding: 21px 13px
+
+    .progress
+      text-align: center
+      padding: 21px 34px

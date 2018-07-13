@@ -95,7 +95,12 @@ class FormSearch {
         this.emptyElement.classList.add("hidden");
 
         this.itemsElement.innerHTML = "";
-        this.loadResults();
+
+        if (this.inputElement.value === "") {
+            this.progressElement.classList.add("hidden");
+        } else {
+            this.loadResults();
+        }
     }
 
     loadResults() {
