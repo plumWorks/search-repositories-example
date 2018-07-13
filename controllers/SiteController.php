@@ -60,7 +60,7 @@ class SiteController extends Controller
         } else if ($pageSize > 100) {
             throw new \Exception("PageSize can't cross more than 100 results");
         }
-        $params["page_size"] = $pageSize;
+        $params["per_page"] = $pageSize;
 
         $curl = new Curl();
         $curl->setGetParams($params);
@@ -91,7 +91,7 @@ class SiteController extends Controller
 
             if (isset($curl->responseHeaders["Link"])) {
                 $links = $curl->responseHeaders["Link"];
-                $re = '/page=(\d+)\&page_size\=\d+\>\;\srel\=\"last\"/m';
+                $re = '/page=(\d+)\&per_page\=\d+\>\;\srel\=\"last\"/m';
 
                 if (preg_match_all($re, $links, $matches)) {
                     if (count($matches[1]) == 1) {

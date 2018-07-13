@@ -1,4 +1,173 @@
+@import "base"
+
+$backgroundColor: #1BBC9C
+$tintColor: #34495E
+
+$paddingPhonesLandscape: 15%
+$paddingTables: 20%
+$paddingComputers: 25%
+
+$formHeightPhones: 55px
+$formHeightComputers: 70px
+$formHeightTV: 100px
+
 body
+  margin: 0
   font-family: Roboto
-  transition-duration: 400ms
-  transition-timing-function: ease-out
+  background-color: silver
+  @include responsive(computers)
+    font-size: 1.5em
+  @include responsive(tv)
+    font-size: 3em
+
+  .hidden
+    display: none
+
+  form
+    top: 0
+    position: fixed
+    width: 100%
+    height: $formHeightPhones
+    background-color: $backgroundColor
+
+    @include responsive(phonesLandscape)
+      width: 100% - ($paddingPhonesLandscape * 2)
+      @include paddingLeftAndRight($paddingPhonesLandscape)
+
+    @include responsive(tablets)
+      width: 100% - ($paddingTables * 2)
+      @include paddingLeftAndRight($paddingTables)
+
+    @include responsive(computers)
+      width: 100% - ($paddingComputers * 2)
+      height: $formHeightComputers
+      @include paddingLeftAndRight($paddingComputers)
+
+    @include responsive(tv)
+      height: $formHeightTV
+
+    fieldset
+      border: none
+      padding: 0
+      margin: 15px 5%
+
+      input
+        font-size: 1em
+        color: $tintColor
+        width: 100%
+        border: none
+        background-color: transparent
+
+        &::placeholder
+          color: $tintColor
+
+        &:focus
+          outline: none
+
+        &:focus + hr
+          width: 100%
+          border-color: $tintColor
+
+      hr
+        width: 0%
+        margin: 0 auto
+        border-color: transparent
+        transition: 200ms ease-in
+
+      button[type=submit]
+        color: $tintColor
+        position: absolute
+        right: 5%
+        border: 0
+        background-color: transparent
+        @include appearance(none)
+
+        @include responsive(phonesLandscape)
+          right: 5% + $paddingPhonesLandscape
+
+        @include responsive(tablets)
+          right: 3% + $paddingTables
+
+        @include responsive(computers)
+          right: 2% + $paddingComputers
+
+        i.fas
+          font-size: 1.25em
+          @include responsive(computers)
+            font-size: 2em
+          @include responsive(tv)
+            font-size: 4em
+
+  section
+    margin-top: $formHeightPhones
+    color: white
+    background-color: $tintColor
+    @include responsive(computers)
+      margin-top: $formHeightComputers
+    @include responsive(tv)
+      margin-top: $formHeightTV
+
+    ul.items
+      list-style: none
+      padding: 0
+
+      li
+        padding: 5%
+        border-width: 1px 2px
+        border-style: solid
+        border-color: black
+
+        @include responsive(phonesLandscape)
+          padding: 2%
+          @include paddingLeftAndRight($paddingPhonesLandscape)
+
+        @include responsive(tablets)
+          padding: 2%
+          @include paddingLeftAndRight($paddingTables)
+
+        @include responsive(computers)
+          @include paddingLeftAndRight($paddingComputers)
+
+        a > *
+            display: inline-block
+
+        a
+          display: block
+          text-decoration: none
+          color: white
+
+          img
+            width: 30%
+            border-radius: 13px
+            margin-right: 5%
+            background: white
+            @include responsive(phonesLandscape)
+              width: 15%
+            @include responsive(tablets)
+              width: 15%
+            @include responsive(computers)
+              width: 20%
+            @include responsive(tv)
+              width: 25%
+
+          .name
+            vertical-align: top
+            width: 60%
+
+            p
+              font-size: 1.5em
+              margin-bottom: 0
+
+            small
+              opacity: 0.5
+
+    .empty
+      padding: 21px 13px
+      @include responsive(phonesLandscape)
+        @include paddingLeftAndRight($paddingPhonesLandscape + 5%)
+      @include responsive(tablets)
+        @include paddingLeftAndRight($paddingTables + 5%)
+
+    .progress
+      text-align: center
+      padding: 21px 34px

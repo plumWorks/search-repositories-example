@@ -1,0 +1,25 @@
+@mixin responsive($media)
+  @if $media == phones
+    @media only screen and (max-width: 425px)
+      @content
+  @else if $media == phonesLandscape
+    @media only screen and (max-height: 425px)
+      @content
+  @else if $media == tablets
+    @media only screen and (min-width: 426px)
+      @content
+  @else if $media == computers
+    @media only screen and (min-width: 1025px)
+      @content
+  @else if $media == tv
+    @media only screen and (min-width: 1921px)
+      @content
+
+@mixin appearance($value)
+  -moz-appearance: $value
+  -ms-progress-appearance: $value
+  -webkit-appearance: $value
+
+@mixin paddingLeftAndRight($value)
+  padding-left: $value
+  padding-right: $value

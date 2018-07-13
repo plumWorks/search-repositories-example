@@ -3,9 +3,43 @@
 <head>
     <meta charset="UTF-8">
     <title>Github Search Repositories</title>
-    <link href="styles/main.css" media="screen" type="text/css">
+
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+    <link rel="stylesheet" href="fontawesome/css/all.css" type="text/css">
+
+    <script src="js/FormSearch.js" type="application/javascript"></script>
+    <script src="js/main.js" type="application/javascript"></script>
 </head>
 <body>
-    <h1>Work in progress...</h1>
+    <div class="container">
+        <form name="search-repositories" action="/search" method="GET">
+            <fieldset>
+                <button type="submit" disabled="disabled"><i class="fas fa-search"></i></button>
+                <input type="text" name="query" placeholder="Search Github Repositories">
+                <hr />
+            </fieldset>
+        </form>
+        <section id="results">
+            <div class="empty hidden">
+                <p>No results.</p>
+            </div>
+            <ul class="items"></ul>
+            <div class="progress hidden">
+                <i class="fas fa-spinner fa-spin fa-3x"></i>
+            </div>
+        </section>
+    </div>
+
+    <script id="template-item" type="text/html">
+        <li>
+            <a href="/#!" target="_blank" data-href="href">
+                <img src="/#!" alt="github-avatar" data-img="src" />
+                <div class="name">
+                    <p data-name></p>
+                    <small data-fullName></small>
+                </div>
+            </a>
+        </li>
+    </script>
 </body>
 </html>
