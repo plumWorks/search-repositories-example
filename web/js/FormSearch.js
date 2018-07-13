@@ -147,7 +147,9 @@ class FormSearch {
                 }
             }
 
-            for (const child of itemElement.children) {
+            for (let i = 0; i < itemElement.children.length; i++) {
+                const child = itemElement.children[i];
+
                 this.itemsElement.appendChild(child);
             }
         }
