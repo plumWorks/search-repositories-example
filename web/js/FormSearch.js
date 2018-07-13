@@ -120,6 +120,7 @@ class FormSearch {
 
                 if (response.items.length === 0) {
                     this.emptyElement.classList.remove("hidden");
+                    this.progressElement.classList.add("hidden");
                 } else {
                     this.fillWithItems(response.items);
                 }
